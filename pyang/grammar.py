@@ -176,7 +176,7 @@ stmt_map = {
           ('description', '?'),
           ('reference', '?')]),
     'if-feature':
-        ('identifier-ref', []),
+        ('if-feature-expr', []),
     'identity':
         ('identifier',
          [('base', '?'),
@@ -288,7 +288,9 @@ stmt_map = {
           ('$interleave',
            [('typedef', '*'),
             ('grouping', '*')] +
-           data_def_stmts),
+           data_def_stmts +
+           [('action', '*'),
+            ('notification', '*')]),
           ]),
     'container':
         ('identifier',
@@ -303,7 +305,9 @@ stmt_map = {
           ('$interleave',
            [('typedef', '*'),
             ('grouping', '*')] +
-           data_def_stmts),
+           data_def_stmts +
+           [('action', '*'),
+            ('notification', '*')]),
           ]),
     'leaf':
         ('identifier',
@@ -351,7 +355,9 @@ stmt_map = {
           ('$interleave',
            [('typedef', '*'),
             ('grouping', '*')] +
-           data_def_stmts),
+           data_def_stmts +
+           [('action', '*'),
+            ('notification', '*')]),
           ]),
     'key':
         ('key-arg', []),
@@ -430,7 +436,9 @@ stmt_map = {
           ('reference', '?'),
           ('$interleave',
            [('case', '*')] +
-           data_def_stmts),
+           data_def_stmts +
+           [('action', '*'),
+            ('notification', '*')]),
           ]),
     'when':
         ('string',
@@ -438,6 +446,18 @@ stmt_map = {
           ('reference', '?'),
           ]),
     'rpc':
+        ('identifier',
+         [('if-feature', '*'),
+          ('status', '?'),
+          ('description', '?'),
+          ('reference', '?'),
+          ('$interleave',
+           [('typedef', '*'),
+            ('grouping', '*')]),
+          ('input', '?'),
+          ('output', '?'),
+          ]),
+    'action':
         ('identifier',
          [('if-feature', '*'),
           ('status', '?'),
